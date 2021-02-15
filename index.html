@@ -37,11 +37,13 @@
 
         
 <a-assets>
-    <video crossorigin="anonymous" id="BS0i677" controls="true" autoplay="true" loop="true" type="video/mp4" src="https://static.videezy.com/system/resources/previews/000/002/004/original/20140614-SoudertonPA-YellowFlowersBreeze.mp4"> 
+    <video id="BS0i677" preload="auto" src="https://static.videezy.com/system/resources/previews/000/002/004/original/20140614-SoudertonPA-YellowFlowersBreeze.mp4" autoplay="true" loop="true" crossorigin="anonymous"></video>
 </a-assets>
 
 <a-marker vidhandler preset="custom" type="pattern" url="https://raw.githubusercontent.com/vinoddhas/arlunar/main/asset/pattern-yearofox.patt">
+    <a-box position='0 0.5 0' material='opacity: 0.5; side: double'>
         <a-video  src="#BS0i677" position="0 0.5 0" rotation="270 0 0" play="true" width=2 height=2 ></a-video>
+    </a-box>
 </a-marker>
 
 <a-entity camera></a-entity>
