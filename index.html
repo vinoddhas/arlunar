@@ -1,0 +1,61 @@
+<!doctype HTML>
+<html>
+<head>
+
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.7/aframe/build/aframe-ar.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script>
+        AFRAME.registerComponent('vidhandler', {
+            // ...
+            init: function () {
+                // Set up initial state and variables.
+                this.toggle = false;
+                this.vid = document.querySelector("#BS0i6")
+                this.vid.pause();
+            },
+            tick: function () {
+                if (this.el.object3D.visible == true) {
+                    if (!this.toggle) {
+                        this.toggle = true;
+                        this.vid.play();
+                    }
+                } else {
+                    this.toggle = false;
+                    this.vid.pause();
+                }
+            }
+        });
+
+    </script>
+
+
+</head>
+
+<body style='margin : 0px; overflow: hidden;'>
+    <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
+
+        
+<a-assets>
+	<video crossorigin="anonymous" id="BS0i6" controls="true" autoplay="true" loop="true" type="video/mp4" src="https://bayergroup.sharepoint.com/sites/BASIABayerAsianSocietyinAmerica/Shared%20Documents/Logo/Lunar_New%20Year/LunarNewYear.mp4">  
+</a-assets>
+
+<a-marker vidhandler preset="custom" type="pattern" url="https://bayergroup.sharepoint.com/sites/BASIABayerAsianSocietyinAmerica/Shared%20Documents/Logo/Lunar_New%20Year/pattern-yearofox.patt">
+    <a-box position='0 0.5 0' material='transparent: true; opacity: 0; side: double'>
+        <a-video  src="#BS0i6" position="0 0.5 0" rotation="270 0 0" play="true" width=2 height=2 ></a-video>
+    </a-box>
+</a-marker>
+
+<a-entity camera></a-entity>
+
+</a-scene>
+
+<script>
+    window.addEventListener('click', function () {
+    var v = document.querySelector('#BS0i6');
+    v.play();
+    });
+</script>
+  
+ </body>
+</html>
